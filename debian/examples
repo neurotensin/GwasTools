@@ -1,0 +1,7 @@
+# Upstream samples files
+debian/upstream.docs/toy.ped
+debian/upstream.docs/toy.map
+
+# Expected outputs and script for autopkgtest
+debian/tests/run-sample-analysis
+debian/tests/output_tests/*

@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+DIRECTORY=build_dynamic/
+
+%:
+	dh $@ --sourcedirectory=$(DIRECTORY)
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f plink2.1
+	rm -f pgen_compress.1
+
+override_dh_auto_build:
+	dh_auto_build
+	help2man --no-discard-stderr --name="whole genome SNP analysis" $(DIRECTORY)/plink2 > plink2.1
+	help2man --no-discard-stderr --name="whole genome SNP analysis" $(DIRECTORY)/pgen_compress > pgen_compress.1
+
+override_dh_installman:
+	dh_installman plink2.1
+	dh_installman pgen_compress.1
+
+override_dh_installchangelogs:
+	dh_installchangelogs debian/upstream.docs/upstream.changelog

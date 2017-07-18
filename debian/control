@@ -1,0 +1,30 @@
+Source: plink2
+Section: science
+Priority: optional
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Dylan Aïssi <bob.dybian@gmail.com>
+Build-Depends: debhelper (>= 10),
+               help2man,
+               libatlas-base-dev,
+               liblapack-dev,
+               zlib1g-dev
+Standards-Version: 4.0.0
+Vcs-Browser: https://anonscm.debian.org/git/debian-med/plink2.git
+Vcs-Git: https://anonscm.debian.org/git/debian-med/plink2.git
+Homepage: https://www.cog-genomics.org/plink/2.0/
+
+Package: plink2
+Architecture: any-amd64 any-i386 armel armhf mipsel
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: whole-genome association analysis toolset
+ plink expects as input the data from SNP (single nucleotide polymorphism)
+ chips of many individuals and their phenotypical description of a disease.
+ It finds associations of single or pairs of DNA variations with a phenotype
+ and can retrieve SNP annotation from an online source.
+ .
+ SNPs can evaluated individually or as pairs for their association with the
+ disease phenotypes. The joint investigation of copy number variations is
+ supported. A variety of statistical tests have been implemented.
+ .
+ plink2 is a comprehensive update of plink and plink1.9 with new algorithms
+ and new methods, faster and less memory consumer than the first plink.

@@ -1,0 +1,40 @@
+Author: Dylan Aïssi <bob.dybian@gmail.com>
+Description: Take into account the user-provided compiler flags.
+Last-Update: 2017-07-17
+Forwarded: TODO
+
+--- a/build_dynamic/Makefile
++++ b/build_dynamic/Makefile
+@@ -36,11 +36,11 @@
+   ARCH32 = -m32 -march=i686
+   CXXFLAGS = -std=c++0x
+ else
+-  CXXFLAGS = -std=c++11
++  CXXFLAGS += -std=c++11
+ endif
+ BASEFLAGS += ${ARCH32}
+ 
+-CFLAGS=-O2 -std=gnu99
++CFLAGS+=-O2 -std=gnu99
+ # zstd appears to be seriously targeted at -O3; see 26 Jul 2016 entry at
+ # cbloom.com/rants.html
+ ifdef ZSTD_O2
+@@ -113,13 +113,13 @@
+ all: plink2 pgen_compress
+ 
+ plink2: $(CSRC) $(ZCSRC) $(CPPSRC)
+-	gcc $(CFLAGS) $(CSRC) -c
+-	gcc $(ZCFLAGS) $(ZCSRC) -c
+-	g++ $(CXXFLAGS) $(CPPSRC) -c
+-	g++ $(OBJ) $(ARCH32) -o plink2 $(BLASFLAGS) $(LINKFLAGS)
++	gcc $(CPPFLAGS) $(CFLAGS) $(CSRC) -c
++	gcc $(CPPFLAGS) $(ZCFLAGS) $(ZCSRC) -c
++	g++ $(CPPFLAGS) $(CXXFLAGS) $(CPPSRC) -c
++	g++ $(OBJ) $(ARCH32) -o plink2 $(BLASFLAGS) $(LINKFLAGS) $(LDFLAGS)
+ 
+ pgen_compress: ../pgenlib_internal.cpp ../pgen_compress.cpp
+-	g++ $(CXXFLAGS) ../pgenlib_internal.cpp ../pgen_compress.cpp -o pgen_compress
++	g++ $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) ../pgenlib_internal.cpp ../pgen_compress.cpp -o pgen_compress
+ 
+ .PHONY: clean
+ clean:

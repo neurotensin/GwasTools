@@ -1,0 +1,8 @@
+plink2 (2.00~a-170717-1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #858947)
+  * TODO:
+    - add autopkgtest
+    - remove embedded zstd
+
+ -- Dylan Aïssi <bob.dybian@gmail.com>  Tue, 18 Jul 2017 23:32:40 +0200

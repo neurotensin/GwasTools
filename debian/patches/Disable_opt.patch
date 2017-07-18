@@ -1,0 +1,16 @@
+Author: Dylan Aïssi <bob.dybian@gmail.com>
+Description: Not acceptable for a debian package.
+Last-Update: 2017-07-17
+Forwarded: not-needed
+
+--- a/build_dynamic/Makefile
++++ b/build_dynamic/Makefile
+@@ -11,7 +11,7 @@
+ #     LD_LIBRARY_PATH to include the appropriate directories)
+ #   32-bit binary (also sets STATIC_ZLIB, ZSTD_O2, and NO_SSE42): FORCE_32BIT
+ #     (warning: you may need to add a zconf.h symlink to make that work)
+-NO_SSE42 =
++NO_SSE42 = 1
+ NO_LAPACK =
+ PREFER_CBLAS_F77 =
+ ZSTD_O2 = 1

@@ -1,0 +1,11 @@
+How to rename the upstream sources
+=============================================
+
+uscan
+mv plink2_170717.orig.tar.xz \
+   plink2_2.00~a-170717.orig.tar.xz
+
+After uscan, you should add the version "2.00~a" to the filename.
+The version "2.00~a" is specified in the "plink2.cpp" file.
+
+ -- Dylan Aïssi <bob.dybian@gmail.com>  Tue, 18 Jul 2017 23:32:40 +0200

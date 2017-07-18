@@ -1,0 +1,45 @@
+# Copy/Paste from https://www.cog-genomics.org/plink/2.0/
+
+17 Jul 2017: BGEN v1.2/1.3 importer memory allocation bugfix. Size of failed allocation is now logged on most out-of-memory errors.
+
+2 Jul: Improved multithreading in BGEN v1.2/1.3 importer. Python writer can now be called with multiple variants at a time.
+
+25 Jun: Basic BGEN v1.2/1.3 import (unphased biallelic dosages; suffices for main UK Biobank data release). --warning-errcode flag added (causes an error code to be returned to the OS on exit when at least one warning is printed).
+
+20 Jun: --condition-list + variant filter bugfix.
+
+5 Jun: --make-pgen memory requirement greatly reduced. End time now printed to console in most situations.
+
+4 Jun: --hwe no longer causes a segfault when chrX is present and no gender information is available. Fixed --dummy bug.
+
+29 May: --import-dosage format=1 bugfix.
+
+26 May: --glm 'standard-beta' modifier replaced with --variance-standardize flag. --quantile-normalize function added. Fixed a missing-sex allele counting bug.
+
+25 May: --hardy/--hwe works properly again when chrX is present but not at the beginning of the dataset.
+
+22 May: Fixed major dosage data + sample-filter bug; we recommend rerunning any operations involving both dosage data and sample filtering performed with earlier plink2 builds. --score 'list-variants' modifier added.
+
+19 May: Fixed a bug with allele frequency computation on dosage data when sample filter(s) are applied.
+
+18 May: Many categorical phenotype-handling flags (--within, --keep-cats, --split-cat-pheno, ...) implemented. Basic phenotype-based filtering implemented (e.g. "--remove-if PHENO1 '>' 2.5"; note that unnamed phenotypes are assigned the names 'PHENO1', 'PHENO2', etc., and that the '<' and '>' characters must be quoted in most shells). --write-covar implemented. --mach-r2-filter implemented, and raw MaCH r2 values can be dumped with "--freq cols=+machr2".
+
+11 May: --condition{-list} + --covar bugfix.
+
+8 May: Fix quantitative phenotype/covariate loading bug introduced in 6 May build.
+
+7 May: --import-dosage implemented.
+
+6 May: Fixed bug which caused '0' to be treated as control instead of missing for binary phenotypes. Minor change to --glm's column headers, in preparation for multiallelic data.
+
+2 May: --score bugfix. --maj-ref bugfix. --vcf-min-dp and '--export A-transpose' implemented.
+
+1 May: VCF dosage import/export, --vcf-min-gq, and --read-freq implemented. --score can now work with standard errors. --autosome{-par} now works properly. SNPHWE2 and SNPHWEX functions relicensed as GPL-2+, to enable inclusion in the HardyWeinberg R package.
+
+20 April: .sample export bugfix (didn't work if file was over 256 KB and no phenotypes were present). --dummy implemented (can now generate dosages).
+
+19 April: --hardy/--hwe chrX bugfix (thanks to Jan Graffelman for catching the problem and validating the fix). --new-id-max-allele-len now has three modes ('error', 'missing', and 'truncate'), and the default mode is now 'error' (i.e. --set-missing-var-ids and --set-all-var-ids now error out when an allele code longer than 23 characters is encountered, instead of silently truncating). --score implemented, and extended to support variance-normalization and multiple score columns (these two features provide a simple way to project new samples onto previously computed principal components).
+
+11 April: --pca var-wts bugfix, and --pca eigenvalue ordering bugfix. --glm linear regression and --condition{-list} support added. --geno/--mind/--missing/--genotyping-rate can now refer to missing dosages instead of just missing hardcalls (note that, when importing dosage data, dosages in (0.1, 0.9) and (1.1, 1.9) are saved but there usually won't be associated hardcalls).
+
+20 March 2017: Initial public release.
