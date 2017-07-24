@@ -11,3 +11,8 @@ Reference:
     URL: http://www.gigasciencejournal.com/content/4/1/7
     DOI: 10.1186/s13742-015-0047-8
     eprint: http://www.gigasciencejournal.com/content/pdf/s13742-015-0047-8.pdf
+Registry:
+  - Name: OMICtools
+    Entry: OMIC_00206
+  - Name: RRID
+    Entry: SCR_001757
