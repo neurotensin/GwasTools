@@ -1,0 +1,25 @@
+#!/bin/sh -e
+# http://dep.debian.net/deps/dep8/
+# Autopkgtest: Test if plink1.9 run analysis correctly
+# Author: Dylan Aïssi <bob.dybian@gmail.com>
+# Last-Update: 2014-12-22
+
+pkg=plink2
+if [ "$ADTTMP" = "" ] ; then
+  ADTTMP=`mktemp -d /tmp/${pkg}-test.XXXXXX`
+fi
+cd $ADTTMP
+cp -a /usr/share/doc/${pkg}/examples/* $ADTTMP
+
+PLINK20_TEST='plink1.9 --file toy'
+
+# Allele frequencies
+$PLINK20_TEST --freq
+diff plink.frq expected.plink.frq
+
+# Case/control or QTL association
+$PLINK20_TEST --assoc
+diff plink.assoc expected.plink.assoc
+
+rm -f $ADTTMP/*
+
